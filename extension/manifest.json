@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Veracious",
+  "version": "1.0",
+  "description": "Analyze what your algorithm is feeding you",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://twitter.com/*",
+    "https://x.com/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://twitter.com/*", "https://x.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Veracious"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
